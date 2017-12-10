@@ -1,0 +1,15 @@
+Configuration of DRAW graph:
+	conv_net: True
+	saveModelTo: /cluster/na02zijy/WeaklySupervisedLearning/Networks/Tmp_ModelFolder/model4
+	img_size_w: 40
+	conv_pretrained: False
+	hidden_n: 256
+	seq_length: 10
+	rnnInit: True
+	conv_weights: ./Networks/convMNIST/weights
+	attention_N: 20
+	denseInit: True
+	img_size_h: 40
+	conv_name: MNIST
+	dense_dim: 256
+	label_size: 10

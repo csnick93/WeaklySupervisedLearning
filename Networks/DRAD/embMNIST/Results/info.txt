@@ -1,0 +1,27 @@
+Configuration of DRAW graph:
+	dense_dims_cnn: [512, 256]
+	img_size_w: 100
+	trainable: True
+	feature_maps: [8, 16, 32]
+	rnnInit: True
+	img_size_h: 59
+	conv_weights: ./Networks/pretrainedCNN/mnist/pretrained_weights
+	limit_delta: False
+	gru: False
+	no_color_channels: 3
+	padding_type: VALID
+	batch_normalization: False
+	leaky_relu_alpha: 0.3
+	delta_limit: 2
+	local_response_normalization: True
+	attention_N: 21
+	saveModelTo: /cluster/na02zijy/WeaklySupervisedLearning/Networks/Tmp_ModelFolder/model3
+	learn_sigma: False
+	kernel_sizes: [3, 3, 3]
+	hidden_n: 256
+	conv_pretrained: False
+	seq_length: 12
+	pooling: [2, 2, 0]
+	denseInit: True
+	debug: True
+	label_size: 10

@@ -1,0 +1,3 @@
+model_checkpoint_path: "/cluster/na02zijy/WeaklySupervisedLearning/Networks/Tmp_ModelFolder/model1/model.ckpt"
+all_model_checkpoint_paths: "/cluster/na02zijy/WeaklySupervisedLearning/Networks/Tmp_ModelFolder/model1/model"
+all_model_checkpoint_paths: "/cluster/na02zijy/WeaklySupervisedLearning/Networks/Tmp_ModelFolder/model1/model.ckpt"

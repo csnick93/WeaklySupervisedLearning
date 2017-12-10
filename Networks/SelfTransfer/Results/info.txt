@@ -1,0 +1,12 @@
+Configuration of Self Transfer graph:
+	kernel_sizes: [3, 3, 3]
+	save_model_to: /cluster/na02zijy/WeaklySupervisedLearning/Networks/Tmp_ModelFolder/model1
+	img_size: (59, 100, 3)
+	dense_dims: [128, 64]
+	local_response_normalization: True
+	feature_maps: [8, 16, 32]
+	kernel_size_loc: 3
+	pooling: [2, 2, 2]
+	padding_type: VALID
+	label_size: 10
+	batch_normalization: False

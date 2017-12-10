@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConfigParameters>
+	<!--Parameters regarding the data of training-->
+	<DataParameters>
+		<!-- Dataset to train on. Currently available in repository are {cMNIST, embMNIST}.
+		However, new datasets can easily be added if they follow the given .npz format of the
+			example datasets
+			Type: string
+			-->
+		<dataset>cMNIST</dataset>
+		<!--These flags indicate whether loss evaluation (training loss, validation loss, test loss) 
+		should be done on complete datasets or just a fraction of it (comes in handy when 
+		datasets are quite large)
+			Type: List of booleans
+		-->
+		<complete_set>[True,True,True]</complete_set>
+	</DataParameters>
+	<!-- Parameters to specify model to train -->
+	<ModelParameters>
+		<!-- Specify model on which to train. Currently implemented are {drad,self_transfer}
+				Type: string
+		-->			
+		<model_name>drad</model_name>
+		<!--Dictionary giving any needed arguments for constructor of the chosen model class
+				Type: dictionary
+				Default: default arguments in model constructor
+		-->
+		<model_args>{}</model_args>
+	</ModelParameters>
+	<!-- Parameters for training -->
+	<TrainingParameters>
+		<!-- Choose whether training should be done at all, or just evaluation of model
+				Type: boolean
+		-->
+		<do_training>True</do_training>
+		<!-- Number of epochs to train the model
+				Type: boolean
+		-->
+		<epochs>1</epochs>
+		<!-- (1-dropout) 
+				Type: float in [0,1]
+		-->
+		<keep_prob>1.0</keep_prob>
+		<!-- L2 regularization in model where specified 
+				Type: float
+		-->
+		<l2_regularization>0.0</l2_regularization>
+		<!-- Even though not pretty, sometimes necessary to clip gradient 
+				Type: boolean
+		-->
+		<clip_gradient>False</clip_gradient>
+		<!-- Clip value for clip gradient if activated 
+				Type: float
+		-->
+		<clip_value>5.0</clip_value>
+		<!-- Optimizer to use for training (must be available in tensorflow API)
+				Type: string
+		-->
+		<optimization>adam</optimization>
+		<!-- Any parameters to set for optimizer as dictionary (e.g. learning rate)
+				Type: dictionary
+				Default: default parameters given by tensorflow for given optimizer
+		-->
+		<optimization_parameters>{}</optimization_parameters>
+		<!-- Batch size for training 
+				Type: int
+		-->
+		<batch_size>64</batch_size>
+	</TrainingParameters>
+	<!-- Parameters for creating training summary -->
+	<SummaryParameters>
+		<!-- Flag for tensorboard creation 
+				Type: boolean
+		-->
+		<tensorboard>True</tensorboard>
+		<!-- Interval rate at which summary statistics are computed 
+				Type: int
+		-->
+		<summary_intervals>1</summary_intervals>
+	</SummaryParameters>
+	<EvaluationParameters>
+		<!-- Flag to indicate whether an evaluation process after training is available for model
+				Type: boolean
+		-->
+		<do_eval>True</do_eval>
+		<!-- Indicate on which datasets evaluation should be done (traing, val, test) 
+				Type: List of strings
+				Default: {'datasets':['train','val','test'],                                   
+                           'loss':True, 'accuracy':True, 'localization':True, 
+                           'save_imgs':True,'num_imgs':10}
+		-->
+		<eval_args>{}</eval_args>
+	</EvaluationParameters>
+</ConfigParameters>

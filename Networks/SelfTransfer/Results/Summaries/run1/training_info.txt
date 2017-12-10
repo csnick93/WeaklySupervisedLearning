@@ -1,0 +1,20 @@
+Training configuration:
+	opt: adam
+	eval_params: {'loss': True, 'datasets': ['train', 'val', 'test'], 'localization': True, 'save_imgs': True, 'num_imgs': 10, 'accuracy': True}
+	do_eval: True
+	complete_set: [0, 0, 0]
+	model_params: {'kernel_sizes': [3, 3, 3], 'save_model_to': '/cluster/na02zijy/WeaklySupervisedLearning/Networks/Tmp_ModelFolder/model1', 'dense_dims': [128, 64], 'feature_maps': [8, 16, 32], 'kernel_size_loc': 3, 'pooling': [2, 2, 2], 'padding_type': 'VALID'}
+	keep_prob: 0.5
+	model_folder: /cluster/na02zijy/WeaklySupervisedLearning/Networks/Tmp_ModelFolder/model1
+	dataset: embMNIST
+	clip_gradient: False
+	summary_folder: /cluster/na02zijy/WeaklySupervisedLearning/Networks/Tmp_ModelFolder/model1/Summaries/run1
+	clip_value: 5.0
+	do_training: True
+	batch_size: 64
+	tensorboard: False
+	num_epochs: 10000
+	opt_params: {'learning_rate': 4e-05}
+	model_name: self_transfer
+	summary_intervals: 1
+	l2_reg: 0.0001

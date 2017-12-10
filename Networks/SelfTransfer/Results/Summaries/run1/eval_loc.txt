@@ -1,0 +1,3 @@
+Average in BB (train): 0.88 
+Average in BB (val): 0.83 
+Average in BB (test): 0.85 

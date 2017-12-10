@@ -1,0 +1,3 @@
+Train Accuracy : 0.89
+Val Accuracy : 0.57
+Test Accuracy : 0.52
