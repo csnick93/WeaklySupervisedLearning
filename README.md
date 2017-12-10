@@ -49,9 +49,13 @@ For quick testing of the implemented models, two datasets were used: cluttered M
 
 This is a very simplistic toy example serving as a sanity check. It consists of 40x40x3 MNIST images that contain some minor clutter. The goal is to correctly classify the number present in the image and to localize the number.
 
+![Screenshot](cMNIST.png)
+
 ### Embedded MNIST
 
 This dataset was created using images from ImageNet and pasting MNIST digits into the images. The digit's intensity value was adapted according to the mean and standard deviation of the respective ImageNet image that it was pasted in. The image dimensions are 59x100x3.
+
+![Screenshot](embMNIST.png)
 
 ## Results
 
