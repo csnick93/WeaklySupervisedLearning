@@ -2,6 +2,30 @@
 
 This is a small tensorflow based framework intended for playing around with different weakly supervised deep learning algorithms. Given images and class level labels, the algorithms attempt to not only classify the object(s) in the image correctly, but also to localize them. The framework has the following structure:
 
+![Screenshot](class_hierarchy.png)
+
+## Components
+
+### Manager
+Class that is responsible to connect all the subcomponents: loading data, creating model, training model and evaluating the trained model.
+
+### DataLoader
+Class that is responsible for loading the .npz data and feeding it back to the manager.
+
+### GraphBuilder
+Class that is responsible for creating the tensorflow model, by initiliazing the model class with the specified parameters.
+
+#### HelperCNN
+Small CNN helper class used for creating convolutional networks needed within the weakly supervised models.
+
+### Network
+Class that is responsible for doing the training and creating the tensorflow summary file.
+
+### Evaluation
+Class that loads trained model and evaluates the perfomance on the dataset (e.g. accuracy, IoU), and also saves out visualization of the detection performance in the specified way (e.g. bounding box, circle,..).
+
+### Configuration
+Configuration of the training process can be done in the config.xml.
 
 ## Implemented Networks
 
