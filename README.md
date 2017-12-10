@@ -1,6 +1,6 @@
 # WeaklySupervisedLearning
 
-This is a small tensorflow based framework intended for playing around with different weakly supervised deep learning algorithms. Given images and class level labels, the algorithms attempt to not only classify the object(s) in the image correctly, but also to localize them. The framework has the following structure:
+This is a small tensorflow based framework written for Python3 intended for playing around with different weakly supervised deep learning algorithms. Given images and class level labels, the algorithms attempt to not only classify the object(s) in the image correctly, but also to localize them. The framework has the following structure:
 
 ![Screenshot](class_hierarchy.png)
 
@@ -27,6 +27,19 @@ Class that loads trained model and evaluates the perfomance on the dataset (e.g.
 ### Configuration
 Configuration of the training process can be done in the config.xml.
 
+## Getting Started 
+
+Before starting the code, configure the framework to your needs in the ./Configuration/config.xml. Having done that, just start by running the *manager.py* file.
+
+## Prerequisities:
+
+The following packages are required in order to run the code:
+  - tensorflow (>= 1.4.0)
+  
+The following required packages should come automatically with your python distribution:
+  - numpy (>= 1.13.3)
+  - matplotlib
+
 ## Implemented Networks
 
 Currently there are two implemented networks.
@@ -39,6 +52,7 @@ DRAD was inspired by the following paper: https://arxiv.org/abs/1502.04623. It i
 ### Self Transfer
 
 The self transfer model is an implemented tensorflow version of the following paper: https://arxiv.org/abs/1602.01625. Its basic idea is to train a CNN that in the final layers forks into a classification output layer and a localization output layer. Both layers have a classification loss function, which is linearly combined. By tracing back the highest activations from the localization input, it is possible to visualize the area in the image that was a major cause for the classification decision. Thus, it is possible to obtain the object location just by using class labels. 
+NOTE: This model only runs on GPU currently as the tf.nn.max_pool_with_argmax method only runs on GPU.
 
 
 ## Available Datasets
