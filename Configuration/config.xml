@@ -20,7 +20,7 @@
 		<!-- Specify model on which to train. Currently implemented are {drad,self_transfer}
 				Type: string
 		-->			
-		<model_name>drad</model_name>
+		<model_name>self_transfer</model_name>
 		<!--Dictionary giving any needed arguments for constructor of the chosen model class
 				Type: dictionary
 				Default: default arguments in model constructor
