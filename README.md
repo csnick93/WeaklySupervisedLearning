@@ -46,7 +46,20 @@ Currently there are two implemented networks.
 
 ### Deep Recurrent Attentive Detector (DRAD)
 
-DRAD was inspired by the following paper: https://arxiv.org/abs/1502.04623. It is a recurrent network with an integrated attention mechanism.
+DRAD was inspired by the following paper: https://arxiv.org/abs/1502.04623. It is a recurrent network with an integrated attention mechanism. The architecture is the following:
+
+<img src="DRAD_architecture.png" alt="Drawing" height="250"/>
+
+
+The basic workflow is the following:
+  - At each timestep, feed in the original image *x*.
+  - Perform the read operation on the original image which will, under the consideration of the history state of the LSTM, output a location and a Gaussian kernel size.
+  - Using this location and Gaussian kernel size, a blurred image patch of predefined size (which defines the attention size) is extracted and fed into the CNN, which extracts a feature vector *r* that is passed on to the LSTM.
+  - The LSTM uses the combination of the previous history vector *h* and the feature vector *r* to decide where to look next for the object.
+  
+Thus, using a Gaussian attention mechanism in combination with CNNs and RNNs, the network will at each timestep move closer to the object in the image to be able to correctly classify the image, at least ideally. The classification result is taken from the output of the softmax layer at the last RNN unfolding, while the localization is the image patch extracted where the LSTM output the highest confidence for the chosen class.
+See below for an example series, where the blue rectangle signifies the current attention patch and the red rectangle would be the optimal bounding box. The yellow bounding box is the one that is chosen by the model.
+
 
 
 ### Self Transfer
@@ -77,8 +90,12 @@ In the Results folder, some results of each model are presented. If desired, I c
 
 ### DRAD
 
+At each timepoint, a new attention patch is computed (blue rectangle). In the end the highest confidence patch is chosen as the localization (yellow rectangle), which in this case was the last timestep.
+
 <img src="./Networks/DRAD/embMNIST/Results/test/Sample_9/time_0.png" alt="Drawing" height="100"/> <img src="./Networks/DRAD/embMNIST/Results/test/Sample_9/time_2.png" alt="Drawing" height="100"/> <img src="./Networks/DRAD/embMNIST/Results/test/Sample_9/time_6.png" alt="Drawing" height="100"/> <img src="./Networks/DRAD/embMNIST/Results/test/Sample_9/time_10.png" alt="Drawing" height="100"/> <img src="./Networks/DRAD/embMNIST/Results/test/Sample_9/time_11.png" alt="Drawing" height="100"/>
  
 ### Self Transfer
+
+For each image, the maximum activation for the chosen class is backtracked to an input pixel. A blob of certain radius is drawn in to visualize the localization result.
 
 <img src="./Networks/SelfTransfer/Results/Summaries/run1/EvaluatedImages/test/img1.png" alt="Drawing" height="200"/> <img src="./Networks/SelfTransfer/Results/Summaries/run1/EvaluatedImages/test/img3.png" alt="Drawing" height="200"/> <img src="./Networks/SelfTransfer/Results/Summaries/run1/EvaluatedImages/test/img5.png" alt="Drawing" height="200"/>
